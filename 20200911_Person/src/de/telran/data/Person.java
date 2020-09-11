@@ -25,8 +25,7 @@ public class Person {
     }
 
     public void setAge(int age) {
-        if(age>0&&age<110) this.age = age;
-        else System.out.println("Wrong age value");
+        this.age = age;
     }
 
     @Override
@@ -45,6 +44,11 @@ public class Person {
     public static Person getYoungestPerson(Person[] persons) {
         return Arrays.stream(persons)
                 .min(Comparator.comparing(Person::getAge))
+                .get();
+    }
+    public static Person getLongestNamePerson(Person[] persons) {
+        return Arrays.stream(persons)
+                .max(Comparator.comparing(person -> person.name.length()))
                 .get();
     }
 }
